@@ -23,8 +23,8 @@ j = 0
 while(j!=1):
   try :
     c = int(input("Votre choix : "))
-    list=[1,2,3,4,5,6]
-    list.index(c)
+    choix=[1,2,3,4,5,6]
+    choix.index(c)
   except :
     print("Entrée incorrecte, veuiller choisir un chiffre entre 1 et 6.\n")
     j = 5
