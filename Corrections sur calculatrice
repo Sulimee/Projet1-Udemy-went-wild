@@ -1,0 +1,60 @@
+```python
+
+print("       Calculatrice\n")
+
+# Proposer à l'utilisateur de recommencer sa saisie si erreur il y a :
+i=0
+while(i!=1):
+  # Gérer si le type entré n'est pas un chiffre :
+  try :
+  # Demander à l'utilisateur les variables :
+    a = float(input("Veuillez entrer un premier nombre :"))
+    b = float(input("Veuillez entrer un second nombre : "))
+  except:
+    print("\nLe programme a déclenché une erreur, veuiller entrer un nombre.\nAttention à ne pas utiliser la virgule, mais le point!\n ")
+    i=10
+  else :
+    i=1
+
+#Proposer à l'utilisateur de choisir son oppération
+print ('''\nPour réaliser l'oppération a+b, tapper 1\nPour réaliser l'oppération a-b, tapper 2\nPour réaliser l'oppération b-a, tapper 3\nPour réaliser l'oppération a*b, tapper 4\nPour réaliser l'oppération a/b, tapper 5\nPour réaliser l'oppération b/a, tapper 6\n''')
+list_choix = range(0,7)
+c = 0
+
+while(c==0):
+  try :
+    c = int(input("Votre choix : "))
+  except:
+    print("Entrée incorrecte, veuiller choisir un chiffre entre 1 et 6.\n")
+
+  if c not in list_choix :
+    c = 0
+    print("Entrée incorrecte, veuiller choisir un chiffre entre 1 et 6.\n")
+  # Réaliser le calcul en fonction du choix
+    
+  elif c == 1 :
+    # Calculer l'addition
+    print(f"\nLe résultat de l'addition du nombre {a} avec le nombre {b} est égal à {a+b}.")
+  elif c == 2 :
+    # Calculer a-b
+    print(f"\nLe résultat de la soustraction du nombre {a} avec le nombre {b} est égal à {a-b}.")
+  elif c == 3 :
+    # Calculer b-a
+    print(f"\nLe résultat de la soustraction du nombre {b} avec le nombre {a} est égal à {b-a}.")
+  elif c == 4 :
+    # Calculer a*b
+    print(f"\nLe résultat de la multiplication du nombre {a} avec le nombre {b} est égal à {a*b}.")
+  elif c == 5 :
+    # Calculer a/b
+    if b == 0 :
+      print ("Il est impossible de réaliser ce calcul. On ne peut pas diviser par 0.")
+    else :  
+      print(f"\nLe résultat de la division du nombre {a} avec le nombre {b} est égal à {a/b}.")
+  elif c == 6 :
+    # Calculer b/a
+    if a == 0 :
+      print ("Il est impossible de réaliser ce calcul. On ne peut pas diviser par 0.")
+    else :  
+      print(f"\nLe résultat de la division du nombre {b} avec le nombre {a} est égal à {b/a}.")
+      
+   ```
