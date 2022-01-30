@@ -1,0 +1,74 @@
+# Importation des bibliothèques
+import random
+
+###################################################
+
+# Définition des variables générales
+
+PT_VIE_US = 50
+PT_VIE_ENNEMI = 50
+POTION = 3
+
+###################################################
+
+# Main
+
+print("        *** Jeu de rôle ***\n\n")
+
+# Choix d'une action tant qu'il reste des points de vie:
+while PT_VIE_US > 0 :
+
+  user_choice = input("Souhaitez-vous attaquer(1) ou utiliser une potion (2) ? ")
+
+  if user_choice == "1" :  # Si choix d'attaquer
+    degat_to_emi = random.randint(5,10)
+    PT_VIE_ENNEMI = PT_VIE_ENNEMI - degat_to_emi
+    degat_from_emi = random.randint(5,15)
+    PT_VIE_US = PT_VIE_US - degat_from_emi
+
+    print(f'''    Vous avez infligé {degat_to_emi} points de dégats à l'ennemi.''')
+
+    if PT_VIE_ENNEMI <= 0 : # Quand l'énnemi est tué
+      print (f"Tu as gagné.\nFin du jeu")
+      break
+    if PT_VIE_US <= 0 :  # Quand nous sommes tués
+      print(f'''    L'ennemi vous a infligé {degat_from_emi} points de dégat.\n\
+    Il vous reste 0 points de vie.\n\
+    Il reste {PT_VIE_ENNEMI} points de vie à l'ennemi.\n''')
+      print("Perdu!\nRetente ta chance...")
+      break
+    else : # Si personne n'est tué
+      print(f'''    L'ennemi vous a infligé {degat_from_emi} points de dégat.\n\
+    Il vous reste {PT_VIE_US} points de vie.\n\
+    Il reste {PT_VIE_ENNEMI} points de vie à l'ennemi.\n''')
+      print(20*"---")
+
+  elif POTION == 0 : # Si plus de potions
+    print("Vous n'avez plus de potions...")
+
+  elif user_choice == "2" : # Si on choisi d'utiliser une potion
+    POTION -=1
+    gain_vie = random.randint(15,50)
+    print(f"Vous récupérez {gain_vie} points de vie. ({POTION} potion{'s' if POTION > 1 else''} restantes.)")   
+
+    degat_from_emi = random.randint(5,15)
+    PT_VIE_US = PT_VIE_US + gain_vie - degat_from_emi
+
+    print(f'''L'ennemi vous a infligé {degat_from_emi} points de dégat.\n\
+    Il vous reste {PT_VIE_US} points de vie.\n\
+    Il reste {PT_VIE_ENNEMI} points de vie à l'ennemi.\n''')
+
+    print(10*"---")
+
+    print("Vous passez votre tour...")
+
+    degat_from_emi = random.randint(5,15)
+    PT_VIE_US = PT_VIE_US - degat_from_emi
+
+    print(f'''L'ennemi vous a infligé {degat_from_emi} points de dégat.\n\
+    Il vous reste {PT_VIE_US} points de vie.\n\
+    Il reste {PT_VIE_ENNEMI} points de vie à l'ennemi.\n''')
+
+    print(10*"---")
+
+
